@@ -2,20 +2,43 @@
 
 public class NPCSpawner : MonoBehaviour
 {
-    public NPCFactory mFactory;
+    private AnimalINPC mHorse;
+    // private AnimalINPC mBull;
+    // private AnimalINPC mWienerDog;
 
-    private INPC mFarmer;
-    private INPC mBeggar;
-    private INPC mShopowner;
+    // private PeopleINPC mCityboy;
+    private PeopleINPC mCowboy;
+    private PeopleINPC mCowboyNVG;
+    // private PeopleINPC mWeenie;
 
-    public void SpawnVillagers()
+    private AbstractFactory factory;
+
+    public void SpawnAnimals()
     {
-        mFarmer = mFactory.GetNPC(NPCType.Farmer);
-        mBeggar = mFactory.GetNPC(NPCType.Beggar);
-        mShopowner = mFactory.GetNPC(NPCType.Shopowner);
+        factory = FactoryProducer.GetFactory(FactoryType.Animal);
 
-        mFarmer.Speak();
-        mBeggar.Speak();
-        mShopowner.Speak();
+        mHorse = factory.GetAnimal(AnimalNPCType.Horse);
+        // mBull = factory.GetAnimal(AnimalNPCType.Bull);
+        // mWienerDog = factory.GetAnimal(AnimalNPCType.WienerDog);
+
+        mHorse.Speak();
+        // mBull.Speak();
+        // mWienerDog.Speak();
+    }
+
+    public void SpawnPeople()
+    {
+        factory = FactoryProducer.GetFactory(FactoryType.People);
+
+        // mCityboy = factory.GetPeople(PeopleNPCType.Cityboy);
+        mCowboy = factory.GetPeople(PeopleNPCType.Cowboy);
+        mCowboyNVG = new NVGDecorator(factory.GetPeople(PeopleNPCType.Cowboy));
+        // mWeenie = factory.GetPeople(PeopleNPCType.Weenie);
+
+        // mCityboy.Speak();
+        Debug.Log("Person discription and Speech: " + mCowboy.GetDescription() + " | " + mCowboy.Speak());
+        Debug.Log("Person discription and Speech: " + mCowboyNVG.GetDescription() + " | " + mCowboyNVG.Speak());
+        
+        // mWeenie.Speak();
     }
 }
