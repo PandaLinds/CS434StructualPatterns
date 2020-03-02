@@ -9,12 +9,12 @@ public class AnimalNPCFactory : AbstractFactory
             case AnimalNPCType.Horse:
                 AnimalINPC horse = new Horse();
                 return horse;
-            // case AnimalNPCType.Bull:
-            //     AnimalINPC bull = new Bull();
-            //     return bull;
-            // case AnimalNPCType.WienerDog:
-            //     AnimalINPC wienerDog = new WienerDog();
-            //     return wienerDog;
+            case AnimalNPCType.Bull:
+                AnimalINPC bull = new Bull();
+                return bull;
+            case AnimalNPCType.WienerDog:
+                AnimalINPC wienerDog = new WienerDog();
+                return wienerDog;
         }
         return null;
     }

@@ -1,35 +1,78 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public interface AnimalINPC
 {
-    void Speak();
+    string Speak();
     string GetDescription();
+    List<int> GetStats();
 }
 
 public class Horse : AnimalINPC
 {
-    public void Speak()
+    int intel, strength;
+    public string Speak()
     {
-        Debug.Log("Gotta ride into the sunset");
+        return "Neigh";
     }
     public string GetDescription()
     {
         return "Horse";
     }
+    public List<int> GetStats()
+    {
+        intel = 10;
+        strength = 3;
+        List<int> stats = new List<int>();
+        stats.Add(intel);
+        stats.Add(strength);
+
+        return stats;
+    }
 }
 
-// public class Bull : AnimalINPC
-// {
-//     public void Speak()
-//     {
-//         Debug.Log("I don't like red");
-//     }
-// }
+public class Bull : AnimalINPC
+{
+    int intel, strength;
+    public string Speak()
+    {
+        return "Mooooooo";
+    }
+    public string GetDescription()
+    {
+        return "Bull";
+    }
+    public List<int> GetStats()
+    {
+        intel = 3;
+        strength = 9;
+        List<int> stats = new List<int>();
+        stats.Add(intel);
+        stats.Add(strength);
 
-// public class WienerDog : AnimalINPC
-// {
-//     public void Speak()
-//     {
-//         Debug.Log("Where's the snacks");
-//     }
-// }
+        return stats;
+    }
+}
+
+public class WienerDog : AnimalINPC
+{
+    int intel, strength;
+    public string Speak()
+    {
+        return "Woof";
+    }
+    public string GetDescription()
+    {
+        return "WienerDog";
+    }
+    public List<int> GetStats()
+    {
+        intel = 6;
+        strength = 3;
+        List<int> stats = new List<int>();
+        stats.Add(intel);
+        stats.Add(strength);
+
+        return stats;
+    }
+}
